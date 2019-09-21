@@ -2,6 +2,7 @@ package com.riluq.mynoteapp.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.riluq.mynoteapp.database.Note
 import com.riluq.mynoteapp.database.NoteDao
 import com.riluq.mynoteapp.database.NoteDatabase
@@ -19,7 +20,7 @@ class NoteRepository(application: Application) {
         noteDao = db.noteDao
     }
 
-    fun getAllNotes(): LiveData<List<Note>>? {
+    fun getAllNotes(): DataSource.Factory<Int, Note>? {
         return noteDao?.getAllNotes()
     }
 

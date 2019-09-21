@@ -44,6 +44,8 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.1.0'
     androidTestImplementation 'androidx.room:room-testing:2.1.0'
 
+    implementation 'androidx.paging:paging-runtime:2.1.0'
+
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'

@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var adapter: NoteAdapter? = null
+    private var adapter: NotePagedListAdapter? = null
 
     companion object {
         private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
@@ -31,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         val viewModel: MainViewModel = obtainViewModel(this)
         viewModel.getAllNote()?.observe(this, Observer { noteList ->
             if (noteList != null) {
-                adapter?.setListNotes(noteList)
+                adapter?.submitList(noteList)
             }
         })
 
-        adapter = NoteAdapter(this)
+        adapter = NotePagedListAdapter(this)
 
         rv_notes.layoutManager = LinearLayoutManager(this)
         rv_notes.setHasFixedSize(true)

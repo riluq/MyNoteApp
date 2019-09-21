@@ -1,6 +1,6 @@
 package com.riluq.mynoteapp.database
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 
 @Dao
@@ -16,6 +16,8 @@ interface NoteDao {
     fun delete(note: Note)
 
     @Query("SELECT * from note ORDER by id ASC")
-    fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): DataSource.Factory<Int, Note>
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(list: List<Note>)
 }
